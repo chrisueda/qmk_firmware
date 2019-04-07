@@ -61,6 +61,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_LSPO, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, SFT_ENT,  \
   MEH_GRV, KC_LCTL, KC_LALT, KC_LGUI, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT  \
 ),
+// Custom macros
+#define CTL_ESC CTL_T(KC_ESC)  // Tap for Esc, hold for Ctrl
+#define SFT_ENT SFT_T(KC_ENT)  // Tap for Enter, hold for Shift
+#define HPR_TAB ALL_T(KC_TAB)  // Tap for Tab, hold for Hyper (Super+Ctrl+Option+Shift)
+#define MEH_GRV MEH_T(KC_GRV)  // Tap for Backtick, hold for Meh (Ctrl+Option+Shift)
 
 /* Colemak
  * ,-----------------------------------------------------------------------------------.
