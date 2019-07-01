@@ -1,6 +1,9 @@
 #ifndef CONFIG_USER_H
 #define CONFIG_USER_H
 #define TAPPING_TERM 200
+#define LEADER_PER_KEY_TIMING
+#define LEADER_TIMEOUT 250
+
 #include "config_common.h"
 
 #ifdef AUDIO_ENABLE
