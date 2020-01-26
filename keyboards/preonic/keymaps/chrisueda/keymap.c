@@ -64,7 +64,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | Shift|   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |   /  |Enter |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Ctrl | Alt  |   ⌘  |      | Lower |    Space    |Raise | Left | Down |  Up  |Right |
+ * |     | Ctrl | Alt  |   ⌘  | Lower |    Space    |Raise | Left | Down |  Up  |Right |
  * `-----------------------------------------------------------------------------------'
  */
 [_QWERTY] = LAYOUT_preonic_grid( \
@@ -72,7 +72,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   HPR_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_DEL,  \
   TD(TD_ESC_CAPS),  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT, \
   KC_LSPO, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, SFT_ENT,  \
-  KC_LCTL, KC_LALT, KC_LGUI, KC_LGUI, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT  \
+  KC_HYPR, KC_LCTL, KC_LALT, KC_LGUI, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT  \
 ),
 // Custom macros
 #define CTL_ESC CTL_T(KC_ESC)  // Tap for Esc, hold for Ctrl
@@ -105,9 +105,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----------------------------------------------------------------------------------.
  * |      |      |      |      |      |      |      |      |      |      |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      | CtrlQ| CtrlW|      |      |      |      | alt L|  Up  | alt R|      |      |
+ * |      | CtrlQ| CtrlW|      |      |      |      |      |      |      |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Del  |CtrlA |CtrlS | CtrlD| CtrlF|      |cmd L | Left | Down | Right| cmd R|      |
+ * | Del  |CtrlA |CtrlS | CtrlD| CtrlF|      | Left | Down |  Up  | Right|      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |CtrlZ |CtrlX |CtrlC |CtrlV |      |      |      |      |      |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -116,8 +116,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_LOWER] = LAYOUT_preonic_grid( \
   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
-  _______, LGUI(KC_Q), LGUI(KC_W), _______,     _______,   _______, _______,       RALT(KC_LEFT), KC_UP,   RALT(KC_RGHT), _______, _______,  \
-  KC_DEL,  LGUI(KC_A), LGUI(KC_S), LGUI(KC_D), LGUI(KC_F), _______, LGUI(KC_LEFT), KC_LEFT,       KC_DOWN, KC_RGHT, LGUI(KC_RGHT), _______, \
+  _______, LGUI(KC_Q), LGUI(KC_W), _______,     _______,   _______, _______, _______, _______, _______, _______, _______, \
+  KC_DEL,  LGUI(KC_A), LGUI(KC_S), LGUI(KC_D), LGUI(KC_F), _______, KC_LEFT, KC_DOWN, KC_UP, KC_RGHT, _______, _______, \
   _______, LGUI(KC_Z), LGUI(KC_X), LGUI(KC_C), LGUI(KC_V), _______, _______, _______, _______, _______, _______, _______, \
   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______ \
 ),
@@ -138,8 +138,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_RAISE] = LAYOUT_preonic_grid( \
   KC_GRV,  KC_EXLM, KC_AT, KC_HASH, KC_DLR, KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, _______, \
   _______, _______, _______, _______, _______, _______, _______, KC_MINS, KC_EQL, KC_UNDS, KC_PLUS , KC_PIPE,  \
-  KC_DEL,  _______, _______, _______, _______, _______, _______, KC_LCBR, KC_RCBR, KC_LBRC, KC_RBRC,  KC_BSLS, \
-  KC_LSPO, _______, _______, _______, _______, _______, _______, KC_LPRN, KC_RPRN, KC_EQL, LSFT(KC_DOT), _______, \
+  KC_DEL,  _______, _______, _______, _______, _______, _______, KC_LPRN, KC_RPRN, KC_LBRC, KC_RBRC,  KC_BSLS, \
+  KC_LSPO, _______, _______, _______, _______, _______, _______, KC_LCBR, KC_RCBR, KC_EQL, LSFT(KC_DOT), _______, \
   _______, _______, _______, _______, _______, _______, _______, _______, KC_MNXT, KC_VOLD, KC_VOLU, KC_MPLY  \
 ),
 
@@ -275,6 +275,14 @@ void dip_update(uint8_t index, bool active) {
    }
 }
 
+bool did_leader_succeed;
+#ifdef AUDIO_ENABLE
+float leader_start_song[][2] = SONG(ONE_UP_SOUND );
+float leader_succeed_song[][2] = SONG(ALL_STAR);
+float leader_fail_song[][2] = SONG(RICK_ROLL);
+#endif
+LEADER_EXTERNS();
+
 void matrix_scan_user(void) {
   #ifdef AUDIO_ENABLE
     if (muse_mode) {
@@ -289,6 +297,39 @@ void matrix_scan_user(void) {
       muse_counter = (muse_counter + 1) % muse_tempo;
     }
   #endif
+
+  LEADER_DICTIONARY() {
+    did_leader_succeed = leading = false;
+
+    SEQ_ONE_KEY(KC_E) {
+      // Anything you can do in a macro.
+      SEND_STRING(SS_LGUI(SS_LSFT("t")));
+      did_leader_succeed = true;
+    } else
+    SEQ_TWO_KEYS(KC_E, KC_D) {
+      SEND_STRING(SS_LCTRL(SS_LSFT("t")));
+      did_leader_succeed = true;
+    }
+    leader_end();
+  }
+}
+
+void leader_start(void) {
+#ifdef AUDIO_ENABLE
+    // PLAY_SONG(leader_start_song);
+#endif
+}
+
+void leader_end(void) {
+  if (did_leader_succeed) {
+#ifdef AUDIO_ENABLE
+    // PLAY_SONG(leader_start_song);
+#endif
+  } else {
+#ifdef AUDIO_ENABLE
+    // PLAY_SONG(leader_fail_song);
+#endif
+  }
 }
 
 bool music_mask_user(uint16_t keycode) {
